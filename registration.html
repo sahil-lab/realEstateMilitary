@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - Military Veteran Real Estate Consultancy</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="font-sans antialiased bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow mb-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <img src="https://via.placeholder.com/150x50.png?text=Logo" alt="Company Logo" class="h-8 w-auto">
+                    <span class="text-xl font-bold text-primary">Military Veteran Real Estate Consultancy</span>
+                </a>
+                <a href="index.html" class="text-primary hover:text-secondary">← Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration Forms -->
+    <div class="max-w-4xl mx-auto px-4">
+        <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">Registration Portal</h1>
+
+        <!-- Registration Type Selector -->
+        <div class="flex justify-center mb-8">
+            <div class="bg-white rounded-lg shadow p-2 flex space-x-2">
+                <button id="user-tab" class="px-6 py-2 rounded bg-primary text-white">User Registration</button>
+                <button id="admin-tab" class="px-6 py-2 rounded text-gray-600 hover:bg-gray-100">Admin
+                    Registration</button>
+                <button id="superadmin-tab" class="px-6 py-2 rounded text-gray-600 hover:bg-gray-100">Super Admin
+                    Registration</button>
+            </div>
+        </div>
+
+        <!-- User Registration Form -->
+        <div id="user-form" class="registration-form bg-white rounded-lg shadow p-8">
+            <h2 class="text-2xl font-semibold mb-6 text-center">User Registration</h2>
+            <form class="space-y-4">
+                <div>
+                    <label for="user-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                    <input type="text" id="user-name" name="name" required
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+                <div>
+                    <label for="user-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" id="user-email" name="email" required
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+                <div>
+                    <label for="user-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input type="password" id="user-password" name="password" required
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+                <div>
+                    <label for="user-confirm-password" class="block text-sm font-medium text-gray-700 mb-1">Confirm
+                        Password</label>
+                    <input type="password" id="user-confirm-password" name="confirmPassword" required
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+                <button type="submit" class="w-full bg-primary text-white py-2 px-4 rounded hover:opacity-90">
+                    Register as User
+                </button>
+            </form>
+        </div>
+
+        <!-- Admin Registration Form -->
+        <div id="admin-form" class="registration-form bg-white rounded-lg shadow p-8 hidden">
+            <h2 class="text-2xl font-semibold mb-6 text-center">Admin Registration</h2>
+            <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4">
+                <p class="text-sm">Note: Admin registration requires Super Admin authorization.</p>
+            </div>
+            <form class="space-y-4">
+                <div>
+                    <label for="admin-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                    <input type="text" id="admin-name" name="name" required
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+                <div>
+                    <label for="admin-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" id="admin-email" name="email" required
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+                <div>
+                    <label for="admin-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input type="password" id="admin-password" name="password" required
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+                <div>
+                    <label for="admin-confirm-password" class="block text-sm font-medium text-gray-700 mb-1">Confirm
+                        Password</label>
+                    <input type="password" id="admin-confirm-password" name="confirmPassword" required
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+                <div>
+                    <label for="admin-auth-token" class="block text-sm font-medium text-gray-700 mb-1">Super Admin
+                        Authorization Token</label>
+                    <input type="password" id="admin-auth-token" name="authToken" required
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                        placeholder="Enter super admin token">
+                </div>
+                <button type="submit" class="w-full bg-orange-500 text-white py-2 px-4 rounded hover:opacity-90">
+                    Register as Admin
+                </button>
+            </form>
+        </div>
+
+        <!-- Super Admin Registration Form -->
+        <div id="superadmin-form" class="registration-form bg-white rounded-lg shadow p-8 hidden">
+            <h2 class="text-2xl font-semibold mb-6 text-center">Super Admin Registration</h2>
+            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4">
+                <p class="text-sm">Warning: Only one Super Admin account can exist. This is the highest level of access.
+                </p>
+            </div>
+            <form class="space-y-4">
+                <div>
+                    <label for="superadmin-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                    <input type="text" id="superadmin-name" name="name" required
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+                <div>
+                    <label for="superadmin-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" id="superadmin-email" name="email" required
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                        placeholder="superadmin@gmail.com">
+                </div>
+                <div>
+                    <label for="superadmin-password"
+                        class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input type="password" id="superadmin-password" name="password" required
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                        placeholder="abCD123@">
+                </div>
+                <div>
+                    <label for="superadmin-confirm-password"
+                        class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                    <input type="password" id="superadmin-confirm-password" name="confirmPassword" required
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+                <div>
+                    <label for="superadmin-secret-key" class="block text-sm font-medium text-gray-700 mb-1">Master
+                        Secret Key</label>
+                    <input type="password" id="superadmin-secret-key" name="secretKey" required
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                        placeholder="Enter master secret key">
+                </div>
+                <button type="submit" class="w-full bg-red-600 text-white py-2 px-4 rounded hover:opacity-90">
+                    Register as Super Admin
+                </button>
+            </form>
+        </div>
+
+        <!-- Login Links -->
+        <div class="text-center mt-8">
+            <p class="text-gray-600">Already have an account?</p>
+            <div class="mt-2 space-x-4">
+                <a href="#" id="user-login-link" class="text-primary hover:underline">User Login</a>
+                <a href="#" id="admin-login-link" class="text-orange-500 hover:underline">Admin Login</a>
+                <a href="#" id="superadmin-login-link" class="text-red-600 hover:underline">Super Admin Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg w-11/12 md:w-1/3 p-6 relative">
+            <button id="login-close" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h2 id="login-title" class="text-xl font-semibold mb-4">Login</h2>
+            <form id="login-form">
+                <div class="mb-4">
+                    <label for="login-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" id="login-email" name="email" required
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+                <div class="mb-4">
+                    <label for="login-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input type="password" id="login-password" name="password" required
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+                <button type="submit" id="login-submit"
+                    class="w-full bg-primary text-white py-2 px-4 rounded hover:opacity-90">
+                    Login
+                </button>
+            </form>
+            <div id="login-message" class="mt-4 text-center"></div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        const tabs = ['user', 'admin', 'superadmin'];
+        const tabButtons = {
+            user: document.getElementById('user-tab'),
+            admin: document.getElementById('admin-tab'),
+            superadmin: document.getElementById('superadmin-tab')
+        };
+        const forms = {
+            user: document.getElementById('user-form'),
+            admin: document.getElementById('admin-form'),
+            superadmin: document.getElementById('superadmin-form')
+        };
+
+        function switchTab(activeTab) {
+            tabs.forEach(tab => {
+                tabButtons[tab].classList.remove('bg-primary', 'text-white');
+                tabButtons[tab].classList.add('text-gray-600', 'hover:bg-gray-100');
+                forms[tab].classList.add('hidden');
+            });
+
+            tabButtons[activeTab].classList.add('bg-primary', 'text-white');
+            tabButtons[activeTab].classList.remove('text-gray-600', 'hover:bg-gray-100');
+            forms[activeTab].classList.remove('hidden');
+        }
+
+        // Tab event listeners
+        tabButtons.user.addEventListener('click', () => switchTab('user'));
+        tabButtons.admin.addEventListener('click', () => switchTab('admin'));
+        tabButtons.superadmin.addEventListener('click', () => switchTab('superadmin'));
+
+        // Login modal functionality
+        const loginModal = document.getElementById('login-modal');
+        const loginClose = document.getElementById('login-close');
+        const loginTitle = document.getElementById('login-title');
+        const loginSubmit = document.getElementById('login-submit');
+        const loginMessage = document.getElementById('login-message');
+
+        function showLogin(type) {
+            loginTitle.textContent = `${type.charAt(0).toUpperCase() + type.slice(1)} Login`;
+            loginSubmit.textContent = `Login as ${type.charAt(0).toUpperCase() + type.slice(1)}`;
+            loginSubmit.dataset.type = type;
+            loginModal.classList.remove('hidden');
+        }
+
+        function hideLogin() {
+            loginModal.classList.add('hidden');
+            loginMessage.textContent = '';
+        }
+
+        // Login link event listeners
+        document.getElementById('user-login-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            showLogin('user');
+        });
+        document.getElementById('admin-login-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            showLogin('admin');
+        });
+        document.getElementById('superadmin-login-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            showLogin('superadmin');
+        });
+
+        loginClose.addEventListener('click', hideLogin);
+        loginModal.addEventListener('click', (e) => {
+            if (e.target === loginModal) hideLogin();
+        });
+
+        // Form submission handling (placeholder)
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Registration/Login functionality will be connected to backend API');
+            });
+        });
+    </script>
+</body>
+
+</html>
