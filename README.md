@@ -9,11 +9,10 @@
 ## 📞 Contact Information
 
 **Phone Numbers:**
-- +91 9414062575
-- +91 9829088366  
+- +91 89681 20374
 - +91 8559067075
 
-**Email:** sahil.aps2k12@gmail.com
+**Email:** sahil.aps2k12@gmail.com, sajal.kumar001@yahoo.in
 
 ## ✨ Features
 
@@ -167,7 +166,7 @@ realEstateMilitary/
 ### **Email Integration**
 - Auto-formatted emails
 - Property inquiry forms
-- Email: sahil.aps2k12@gmail.com
+- Email: sahil.aps2k12@gmail.com, sajal.kumar001@yahoo.in
 
 ## 🤝 Contributing
 
@@ -191,4 +190,4 @@ This project is licensed under the MIT License.
 
 **Built with ❤️ by Military Veteran Real Estate Consultancy**
 
-For support: sahil.aps2k12@gmail.com | +91 8559067075 
+For support: sahil.aps2k12@gmail.com, sajal.kumar001@yahoo.in | +91 89681 20374, +91 8559067075 

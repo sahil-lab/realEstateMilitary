@@ -687,7 +687,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = getFormData();
         const subject = `Property Inquiry from ${formData.name}`;
         const body = formatEmailMessage(formData);
-        const email = 'sahil.aps2k12@gmail.com';
+        const email = 'sahil.aps2k12@gmail.com,sajal.kumar001@yahoo.in';
         const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
         // Show success message
