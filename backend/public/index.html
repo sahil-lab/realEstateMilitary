@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real Estate Company</title>
+    <!-- Tailwind CSS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-pO+iU0ewOuk4sPi0tLxe3LjVJN8dkUB7DXGAr5I9IrMGsnI13ubvRmBSZ5L3DJ0QA5BTnqCpxVdB+X5rvJDY5g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="font-sans antialiased text-gray-700">
+    <!-- Top Bar with contact and social icons -->
+    <div class="bg-gray-100 text-gray-700 text-sm">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center py-2 px-4">
+            <div class="flex items-center space-x-2 mb-2 md:mb-0">
+                <i class="fa-solid fa-phone"></i>
+                <span>Call us: +91 9414062575, 9829088366</span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <a href="#" aria-label="Facebook" class="text-gray-600 hover:text-primary"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter" class="text-gray-600 hover:text-primary"><i
+                        class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn" class="text-gray-600 hover:text-primary"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="YouTube" class="text-gray-600 hover:text-primary"><i
+                        class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-3">
+            <!-- Logo -->
+            <a href="#home" class="flex items-center space-x-2">
+                <img src="https://via.placeholder.com/150x50.png?text=Logo" alt="Company Logo"
+                    class="h-8 md:h-10 w-auto" />
+                <span class="text-2xl font-bold text-primary hidden md:inline">Military Veteran Real Estate
+                    Consultancy</span>
+            </a>
+            <!-- Mobile nav toggle -->
+            <button id="nav-toggle" class="md:hidden text-gray-600 focus:outline-none" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars fa-lg"></i>
+            </button>
+            <!-- Desktop Navigation -->
+            <nav id="nav-menu" class="hidden md:flex md:items-center md:space-x-6">
+                <ul class="flex flex-col md:flex-row md:space-x-6">
+                    <li>
+                        <a href="#home" class="py-2 md:py-0 block hover:text-primary">Home</a>
+                    </li>
+                    <li class="relative group">
+                        <a href="#property" class="py-2 md:py-0 block flex items-center hover:text-primary">Property<i
+                                class="fa-solid fa-chevron-down ml-1 text-xs"></i></a>
+                        <!-- Sub menu for property -->
+                        <ul
+                            class="absolute left-0 mt-2 w-40 bg-white border border-gray-200 rounded shadow-lg hidden group-hover:block">
+                            <li>
+                                <a href="#property" class="block px-4 py-2 hover:bg-gray-100">Property Listing</a>
+                            </li>
+                            <li>
+                                <a href="#property" class="block px-4 py-2 hover:bg-gray-100">Property Projects</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#services" class="py-2 md:py-0 block hover:text-primary">Services</a>
+                    </li>
+                    <li>
+                        <a href="#" class="py-2 md:py-0 block hover:text-primary">Blog</a>
+                    </li>
+                    <li>
+                        <a href="#" class="py-2 md:py-0 block hover:text-primary">Contact</a>
+                    </li>
+                </ul>
+                <a href="#" class="ml-6 px-4 py-2 bg-primary text-white rounded hover:opacity-90">Sell / Rent
+                    Property</a>
+                <a href="registration.html"
+                    class="ml-4 px-4 py-2 bg-green-600 text-white rounded hover:opacity-90 hidden md:block">
+                    Register
+                </a>
+                <button id="login-btn"
+                    class="ml-4 px-4 py-2 bg-secondary text-white rounded hover:opacity-90 hidden md:block">
+                    Login
+                </button>
+            </nav>
+        </div>
+        <!-- Mobile Navigation Menu -->
+        <nav id="mobile-menu" class="md:hidden hidden px-4 pb-4 bg-white border-t border-gray-200">
+            <ul class="space-y-2">
+                <li>
+                    <a href="#home" class="block py-2 hover:text-primary">Home</a>
+                </li>
+                <li>
+                    <button type="button"
+                        class="flex justify-between items-center w-full py-2 hover:text-primary focus:outline-none"
+                        data-dropdown-target="mobile-sub-menu">
+                        Property
+                        <i class="fa-solid fa-chevron-down ml-1"></i>
+                    </button>
+                    <ul id="mobile-sub-menu" class="ml-4 mt-1 hidden space-y-1">
+                        <li>
+                            <a href="#property" class="block py-1 hover:text-primary">Property Listing</a>
+                        </li>
+                        <li>
+                            <a href="#property" class="block py-1 hover:text-primary">Property Projects</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#services" class="block py-2 hover:text-primary">Services</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 hover:text-primary">Blog</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 hover:text-primary">Contact</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 mt-2 text-center bg-primary text-white rounded hover:opacity-90">Sell
+                        / Rent Property</a>
+                </li>
+                <li>
+                    <a href="registration.html"
+                        class="block py-2 mt-2 text-center bg-green-600 text-white rounded hover:opacity-90">
+                        Register
+                    </a>
+                </li>
+                <li>
+                    <button id="mobile-login-btn"
+                        class="w-full mt-2 px-4 py-2 bg-secondary text-white rounded hover:opacity-90">
+                        Login
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section: Hero -->
+    <section id="home" class="relative h-64 md:h-96 bg-cover bg-center"
+        style="background-image: url('https://via.placeholder.com/1920x600.png?text=Find+Your+Perfect+Property');">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="max-w-7xl mx-auto h-full flex flex-col items-center justify-center relative text-center px-4">
+            <h1 class="text-3xl md:text-5xl font-bold text-white mb-4">
+                Find Your Perfect Property
+            </h1>
+            <p class="text-lg md:text-2xl text-gray-200 mb-6">
+                Discover the best deals for sale and rent in your city
+            </p>
+            <a href="#property" class="px-6 py-3 bg-primary text-white rounded hover:opacity-90">
+                Browse Properties
+            </a>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-8">
+                Featured Projects
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Project Card 1 -->
+                <div class="border border-gray-200 rounded shadow-sm overflow-hidden">
+                    <img src="images/1d74b4a5-7903-4d2b-a267-454c2abbec68.png" alt="Premium Apartments"
+                        class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="text-lg font-semibold mb-1">Premium Apartments</h4>
+                        <p class="text-primary text-sm mb-2">2, 3 BHK Luxury Flats</p>
+                        <p class="text-sm text-gray-600 mb-3">Downtown, City</p>
+                        <a href="#property" class="text-primary text-sm hover:underline">More Details <i
+                                class="fa-solid fa-caret-right ml-1"></i></a>
+                    </div>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="border border-gray-200 rounded shadow-sm overflow-hidden">
+                    <img src="images/b3975092-1725-4a01-86a6-23ba9c69a773.png" alt="Township Development"
+                        class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="text-lg font-semibold mb-1">Township Development</h4>
+                        <p class="text-primary text-sm mb-2">Plots, Villas &amp; Flats</p>
+                        <p class="text-sm text-gray-600 mb-3">Suburban Area</p>
+                        <a href="#property" class="text-primary text-sm hover:underline">More Details <i
+                                class="fa-solid fa-caret-right ml-1"></i></a>
+                    </div>
+                </div>
+                <!-- Project Card 3 -->
+                <div class="border border-gray-200 rounded shadow-sm overflow-hidden">
+                    <img src="images/6205fe9a-bc82-431c-871a-98263d63a0e8.png" alt="Luxury Villas"
+                        class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="text-lg font-semibold mb-1">Luxury Villas</h4>
+                        <p class="text-primary text-sm mb-2">3, 4 BHK Villas</p>
+                        <p class="text-sm text-gray-600 mb-3">Green Meadows</p>
+                        <a href="#property" class="text-primary text-sm hover:underline">More Details <i
+                                class="fa-solid fa-caret-right ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-2xl font-semibold text-center text-gray-800 mb-8">
+                Our Statistics
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-6 text-center">
+                <div>
+                    <p class="text-3xl font-bold text-primary">12K+</p>
+                    <p class="mt-2 text-gray-600 text-sm">Properties</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-bold text-primary">300</p>
+                    <p class="mt-2 text-gray-600 text-sm">Projects</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-bold text-primary">200</p>
+                    <p class="mt-2 text-gray-600 text-sm">Hot Offers</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-bold text-primary">25</p>
+                    <p class="mt-2 text-gray-600 text-sm">Years Experience</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-bold text-primary">8K+</p>
+                    <p class="mt-2 text-gray-600 text-sm">Satisfied Clients</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Gallery Section -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-8">
+                Property Gallery
+            </h2>
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap mb-6 space-x-4">
+                <button class="px-4 py-2 bg-primary text-white rounded focus:outline-none">
+                    All Properties
+                </button>
+                <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded focus:outline-none">
+                    Apartment
+                </button>
+                <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded focus:outline-none">
+                    Villa
+                </button>
+                <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded focus:outline-none">
+                    Plots
+                </button>
+                <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded focus:outline-none">
+                    Commercial
+                </button>
+            </div>
+            <!-- Gallery Items -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Gallery Card 1 -->
+                <div class="border border-gray-200 rounded shadow-sm overflow-hidden">
+                    <img src="https://via.placeholder.com/480x300.png?text=Villa" alt="Villa Category"
+                        class="w-full h-40 object-cover" />
+                    <div class="p-4 text-center">
+                        <h4 class="text-lg font-semibold mb-2">Villas &amp; Bungalows</h4>
+                        <a href="#property" class="text-primary text-sm hover:underline">Explore <i
+                                class="fa-solid fa-caret-right ml-1"></i></a>
+                    </div>
+                </div>
+                <!-- Gallery Card 2 -->
+                <div class="border border-gray-200 rounded shadow-sm overflow-hidden">
+                    <img src="https://via.placeholder.com/480x300.png?text=Apartment" alt="Apartment Category"
+                        class="w-full h-40 object-cover" />
+                    <div class="p-4 text-center">
+                        <h4 class="text-lg font-semibold mb-2">Apartments &amp; Flats</h4>
+                        <a href="#property" class="text-primary text-sm hover:underline">Explore <i
+                                class="fa-solid fa-caret-right ml-1"></i></a>
+                    </div>
+                </div>
+                <!-- Gallery Card 3 -->
+                <div class="border border-gray-200 rounded shadow-sm overflow-hidden">
+                    <img src="https://via.placeholder.com/480x300.png?text=Plots" alt="Plots Category"
+                        class="w-full h-40 object-cover" />
+                    <div class="p-4 text-center">
+                        <h4 class="text-lg font-semibold mb-2">Plots &amp; Land</h4>
+                        <a href="#property" class="text-primary text-sm hover:underline">Explore <i
+                                class="fa-solid fa-caret-right ml-1"></i></a>
+                    </div>
+                </div>
+                <!-- Gallery Card 4 -->
+                <div class="border border-gray-200 rounded shadow-sm overflow-hidden md:col-span-3 md:flex">
+                    <img src="https://via.placeholder.com/960x300.png?text=Commercial" alt="Commercial Category"
+                        class="w-full md:w-1/2 h-40 md:h-48 object-cover" />
+                    <div class="p-4 flex flex-col justify-center text-center md:text-left md:w-1/2">
+                        <h4 class="text-lg font-semibold mb-2">Commercial Properties</h4>
+                        <a href="#property" class="text-primary text-sm hover:underline">Explore <i
+                                class="fa-solid fa-caret-right ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Deals Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-2xl font-semibold text-center text-gray-800 mb-8">
+                Best Deals with Our Company
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded shadow text-center">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fa-solid fa-thumbs-up"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Best Property Suggestions</h3>
+                    <p class="text-sm text-gray-600">
+                        We offer personalised property recommendations tailored to your
+                        requirements and budget.
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded shadow text-center">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Selling Your Property</h3>
+                    <p class="text-sm text-gray-600">
+                        We assist in selling commercial &amp; residential properties and
+                        ensure you get the best value.
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded shadow text-center">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Professional Consultation</h3>
+                    <p class="text-sm text-gray-600">
+                        Our experienced consultants provide expert advice on real estate
+                        projects and investments.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authorized Partners Section -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-2xl font-semibold text-center text-gray-800 mb-8">
+                Authorized Channel Partners
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center">
+                <img src="images/emaar.png" alt="Emaar" class="mx-auto h-16 w-auto partner-logo" />
+                <img src="images/danube.png" alt="Danube" class="mx-auto h-16 w-auto partner-logo" />
+                <img src="images/bhutani.png" alt="Bhutani" class="mx-auto h-16 w-auto partner-logo" />
+                <img src="images/kgk.png" alt="KGK" class="mx-auto h-16 w-auto partner-logo" />
+                <img src="images/mahima.png" alt="Mahima" class="mx-auto h-16 w-auto partner-logo" />
+                <img src="images/vardhman.png" alt="Vardhman" class="mx-auto h-16 w-auto partner-logo" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Newsletter</h2>
+            <p class="text-gray-600 mb-6">
+                Get the latest updates on the real estate market and new project
+                launches.
+            </p>
+            <form class="flex flex-col md:flex-row justify-center items-center max-w-xl mx-auto">
+                <input type="email" placeholder="Enter your email"
+                    class="w-full md:w-2/3 border border-gray-300 rounded px-4 py-2 mb-4 md:mb-0 md:mr-2 focus:outline-none focus:ring-2 focus:ring-primary" />
+                <button type="submit" class="w-full md:w-auto px-6 py-2 bg-primary text-white rounded hover:opacity-90">
+                    Subscribe
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Property Section (Search and Listings) -->
+    <section id="property" class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6">
+                Property Search
+            </h2>
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="text-xl font-semibold flex items-center mb-4 text-gray-800">
+                    <i class="fa-solid fa-search mr-2 text-primary"></i>Search Property
+                </h3>
+                <form id="search-form" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <!-- Keyword -->
+                    <div>
+                        <label for="keyword" class="block text-sm font-medium text-gray-700 mb-1">Keyword</label>
+                        <input type="text" id="keyword" name="keyword" placeholder="Any"
+                            class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary" />
+                    </div>
+                    <!-- Status -->
+                    <div>
+                        <label for="select-status" class="block text-sm font-medium text-gray-700 mb-1">Property
+                            Status</label>
+                        <select id="select-status" name="status"
+                            class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                            <option value="any">Any</option>
+                            <option value="rent">For Rent</option>
+                            <option value="sale">For Sale</option>
+                        </select>
+                    </div>
+                    <!-- Property Type (multi-select) -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Property Type</label>
+                        <div class="relative">
+                            <button type="button" id="type-select-btn"
+                                class="w-full border border-gray-300 rounded px-3 py-2 text-left flex justify-between items-center focus:outline-none">
+                                <span class="label">All Types</span>
+                                <i class="fa-solid fa-chevron-down ml-2 text-gray-500"></i>
+                            </button>
+                            <div id="type-dropdown"
+                                class="absolute left-0 mt-2 w-full bg-white border border-gray-200 rounded shadow-lg z-10 hidden max-h-60 overflow-y-auto">
+                                <div class="px-3 py-2 border-b border-gray-200 flex justify-between">
+                                    <button type="button" id="type-select-all"
+                                        class="text-primary text-sm hover:underline">
+                                        Select All
+                                    </button>
+                                    <button type="button" id="type-deselect-all"
+                                        class="text-primary text-sm hover:underline">
+                                        Deselect All
+                                    </button>
+                                </div>
+                                <ul class="p-3 space-y-2 text-sm">
+                                    <li>
+                                        <label class="flex items-center space-x-2"><input type="checkbox"
+                                                value="commercial-property"
+                                                class="form-checkbox h-4 w-4 text-primary" /><span>Commercial
+                                                Property</span></label>
+                                    </li>
+                                    <li>
+                                        <label class="flex items-center space-x-2"><input type="checkbox"
+                                                value="commercial-plot"
+                                                class="form-checkbox h-4 w-4 text-primary" /><span>Commercial Plot /
+                                                Land</span></label>
+                                    </li>
+                                    <li>
+                                        <label class="flex items-center space-x-2"><input type="checkbox"
+                                                value="industrial-land"
+                                                class="form-checkbox h-4 w-4 text-primary" /><span>Industrial
+                                                Land</span></label>
+                                    </li>
+                                    <li>
+                                        <label class="flex items-center space-x-2"><input type="checkbox"
+                                                value="office-space"
+                                                class="form-checkbox h-4 w-4 text-primary" /><span>Office
+                                                Space</span></label>
+                                    </li>
+                                    <li>
+                                        <label class="flex items-center space-x-2"><input type="checkbox"
+                                                value="restaurant-space"
+                                                class="form-checkbox h-4 w-4 text-primary" /><span>Restaurant
+                                                Space</span></label>
+                                    </li>
+                                    <li>
+                                        <label class="flex items-center space-x-2"><input type="checkbox" value="shop"
+                                                class="form-checkbox h-4 w-4 text-primary" /><span>Shop</span></label>
+                                    </li>
+                                    <li>
+                                        <label class="flex items-center space-x-2"><input type="checkbox"
+                                                value="showroom"
+                                                class="form-checkbox h-4 w-4 text-primary" /><span>Showroom</span></label>
+                                    </li>
+                                    <li>
+                                        <label class="flex items-center space-x-2"><input type="checkbox"
+                                                value="institute-it"
+                                                class="form-checkbox h-4 w-4 text-primary" /><span>Space for Institute /
+                                                IT</span></label>
+                                    </li>
+                                    <li>
+                                        <label class="flex items-center space-x-2"><input type="checkbox"
+                                                value="warehouse"
+                                                class="form-checkbox h-4 w-4 text-primary" /><span>Warehouse |
+                                                Godown</span></label>
+                                    </li>
+                                    <li>
+                                        <label class="flex items-center space-x-2"><input type="checkbox"
+                                                value="project"
+                                                class="form-checkbox h-4 w-4 text-primary" /><span>Project</span></label>
+                                    </li>
+                                    <li>
+                                        <label class="flex items-center space-x-2"><input type="checkbox"
+                                                value="residential-property"
+                                                class="form-checkbox h-4 w-4 text-primary" /><span>Residential
+                                                Property</span></label>
+                                    </li>
+                                    <li>
+                                        <label class="flex items-center space-x-2"><input type="checkbox"
+                                                value="apartment"
+                                                class="form-checkbox h-4 w-4 text-primary" /><span>Apartment /
+                                                Flat</span></label>
+                                    </li>
+                                    <li>
+                                        <label class="flex items-center space-x-2"><input type="checkbox" value="floor"
+                                                class="form-checkbox h-4 w-4 text-primary" /><span>Independent
+                                                Floor</span></label>
+                                    </li>
+                                    <li>
+                                        <label class="flex items-center space-x-2"><input type="checkbox" value="plot"
+                                                class="form-checkbox h-4 w-4 text-primary" /><span>Plot /
+                                                Land</span></label>
+                                    </li>
+                                    <li>
+                                        <label class="flex items-center space-x-2"><input type="checkbox" value="villa"
+                                                class="form-checkbox h-4 w-4 text-primary" /><span>Villa /
+                                                House</span></label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Plot Size -->
+                    <div>
+                        <label for="plot-size" class="block text-sm font-medium text-gray-700 mb-1">Plot Size</label>
+                        <input type="text" id="plot-size" name="plot_size" placeholder="Any"
+                            class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary" />
+                    </div>
+                    <!-- Search button for medium and larger screens -->
+                    <div class="md:col-span-4 flex justify-end mt-2">
+                        <button type="submit" class="px-6 py-2 bg-primary text-white rounded hover:opacity-90">
+                            Search
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <!-- Results header -->
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mt-8 mb-4">
+                <div class="mb-2 md:mb-0 text-gray-800">
+                    <span id="results-count" class="font-bold">6</span> Results
+                </div>
+                <div class="flex items-center space-x-2">
+                    <label for="sort-properties" class="text-sm font-medium text-gray-700">Sort By:</label>
+                    <select id="sort-properties" name="sort-properties"
+                        class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                        <option value="default">Default Order</option>
+                        <option value="title-asc">Property Title A to Z</option>
+                        <option value="title-desc">Property Title Z to A</option>
+                        <option value="price-asc">Price - Low to High</option>
+                        <option value="price-desc">Price - High to Low</option>
+                        <option value="date-asc">Date - Old to New</option>
+                        <option value="date-desc">Date - New to Old</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Property List -->
+            <div id="property-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Property Card 1 -->
+                <article class="property-card border border-gray-200 rounded shadow-sm overflow-hidden"
+                    data-title="Luxury Villa in Gated Project" data-price="12000000" data-date="2025-03-15"
+                    data-status="sale" data-types="residential,villa">
+                    <div class="relative">
+                        <img src="images/3954ba75-04a0-4ed0-865b-daa63bfc98d2.png" alt="Luxury Villa"
+                            class="w-full h-48 object-cover" />
+                        <span class="absolute top-2 left-2 bg-secondary text-white text-xs px-2 py-1 rounded">New
+                            Property</span>
+                        <span class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded">For
+                            Sale</span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="text-lg font-semibold mb-1">
+                            Luxury Villa in Gated Project
+                        </h4>
+                        <h5 class="text-primary text-base font-semibold mb-2">
+                            On Request
+                            <small class="text-gray-500"> - Residential, Villa</small>
+                        </h5>
+                        <p class="text-sm text-gray-600 mb-3">
+                            A beautiful villa located in a gated community with modern
+                            amenities and lush green surroundings.
+                        </p>
+                        <a href="#" class="text-primary text-sm flex items-center hover:underline">More Details
+                            <i class="fa-solid fa-caret-right ml-1"></i></a>
+                        <div class="flex space-x-4 text-sm text-gray-600 mt-3">
+                            <span class="flex items-center space-x-1"><i class="fa-solid fa-expand"></i>
+                                <span>4329 sq ft</span></span>
+                            <span class="flex items-center space-x-1"><i class="fa-solid fa-bed"></i>
+                                <span>4</span></span>
+                            <span class="flex items-center space-x-1"><i class="fa-solid fa-bath"></i>
+                                <span>4</span></span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Property Card 2 -->
+                <article class="property-card border border-gray-200 rounded shadow-sm overflow-hidden"
+                    data-title="Modern 4 BHK Villa" data-price="11600000" data-date="2025-03-10" data-status="sale"
+                    data-types="residential,villa,plot">
+                    <div class="relative">
+                        <img src="images/28bd084d-5797-44ac-b316-ecb32fedfe0a.png" alt="4 BHK Villa"
+                            class="w-full h-48 object-cover" />
+                        <span class="absolute top-2 left-2 bg-secondary text-white text-xs px-2 py-1 rounded">New
+                            Project</span>
+                        <span class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded">For
+                            Sale</span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="text-lg font-semibold mb-1">Modern 4 BHK Villa</h4>
+                        <h5 class="text-primary text-base font-semibold mb-2">
+                            1.16 Cr
+                            <small class="text-gray-500">
+                                - Plot, Residential, Villa
+                            </small>
+                        </h5>
+                        <p class="text-sm text-gray-600 mb-3">
+                            Elegant four bedroom villa situated in a vibrant community
+                            offering luxury living and spacious design.
+                        </p>
+                        <a href="#" class="text-primary text-sm flex items-center hover:underline">More Details
+                            <i class="fa-solid fa-caret-right ml-1"></i></a>
+                        <div class="flex space-x-4 text-sm text-gray-600 mt-3">
+                            <span class="flex items-center space-x-1"><i class="fa-solid fa-expand"></i>
+                                <span>2295 sq ft</span></span>
+                            <span class="flex items-center space-x-1"><i class="fa-solid fa-bed"></i>
+                                <span>4</span></span>
+                            <span class="flex items-center space-x-1"><i class="fa-solid fa-bath"></i>
+                                <span>4</span></span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Property Card 3 -->
+                <article class="property-card border border-gray-200 rounded shadow-sm overflow-hidden"
+                    data-title="Gated Township Project" data-price="5320000" data-date="2025-02-10" data-status="sale"
+                    data-types="residential,plot,project">
+                    <div class="relative">
+                        <img src="images/046efad8-0521-47c6-8475-16daed3db340.png" alt="Township Project"
+                            class="w-full h-48 object-cover" />
+                        <span class="absolute top-2 left-2 bg-secondary text-white text-xs px-2 py-1 rounded">New
+                            Project</span>
+                        <span class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded">For
+                            Sale</span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="text-lg font-semibold mb-1">Gated Township Project</h4>
+                        <h5 class="text-primary text-base font-semibold mb-2">
+                            53.2 L
+                            <small class="text-gray-500">
+                                - Plot, Residential, Project
+                            </small>
+                        </h5>
+                        <p class="text-sm text-gray-600 mb-3">
+                            Plots and villas available in a secure township featuring
+                            landscaped gardens and community amenities.
+                        </p>
+                        <a href="#" class="text-primary text-sm flex items-center hover:underline">More Details
+                            <i class="fa-solid fa-caret-right ml-1"></i></a>
+                        <div class="flex space-x-4 text-sm text-gray-600 mt-3">
+                            <span class="flex items-center space-x-1"><i class="fa-solid fa-expand"></i>
+                                <span>2000 sq ft</span></span>
+                            <span class="flex items-center space-x-1"><i class="fa-solid fa-bed"></i>
+                                <span>-</span></span>
+                            <span class="flex items-center space-x-1"><i class="fa-solid fa-bath"></i>
+                                <span>-</span></span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Property Card 4 -->
+                <article class="property-card border border-gray-200 rounded shadow-sm overflow-hidden"
+                    data-title="Commercial Approved Plot" data-price="19300000" data-date="2025-01-28"
+                    data-status="sale" data-types="commercial-plot">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/488x326.png?text=Property+4" alt="Commercial Plot"
+                            class="w-full h-48 object-cover" />
+                        <span
+                            class="absolute top-2 left-2 bg-secondary text-white text-xs px-2 py-1 rounded">Available</span>
+                        <span class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded">For
+                            Sale</span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="text-lg font-semibold mb-1">Commercial Approved Plot</h4>
+                        <h5 class="text-primary text-base font-semibold mb-2">
+                            1.93 Cr
+                            <small class="text-gray-500"> - Commercial, Plot</small>
+                        </h5>
+                        <p class="text-sm text-gray-600 mb-3">
+                            Prime commercial plot ideal for building showrooms or office
+                            spaces near a developing business district.
+                        </p>
+                        <a href="#" class="text-primary text-sm flex items-center hover:underline">More Details
+                            <i class="fa-solid fa-caret-right ml-1"></i></a>
+                        <div class="flex space-x-4 text-sm text-gray-600 mt-3">
+                            <span class="flex items-center space-x-1"><i class="fa-solid fa-expand"></i>
+                                <span>550 sq m</span></span>
+                            <span class="flex items-center space-x-1"><i class="fa-solid fa-bed"></i>
+                                <span>-</span></span>
+                            <span class="flex items-center space-x-1"><i class="fa-solid fa-bath"></i>
+                                <span>-</span></span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Property Card 5 -->
+                <article class="property-card border border-gray-200 rounded shadow-sm overflow-hidden"
+                    data-title="3 BHK Villa For Sale" data-price="7500000" data-date="2025-01-10" data-status="sale"
+                    data-types="residential,villa">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/488x326.png?text=Property+5" alt="3 BHK Villa"
+                            class="w-full h-48 object-cover" />
+                        <span class="absolute top-2 left-2 bg-secondary text-white text-xs px-2 py-1 rounded">New
+                            Property</span>
+                        <span class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded">For
+                            Sale</span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="text-lg font-semibold mb-1">3 BHK Villa For Sale</h4>
+                        <h5 class="text-primary text-base font-semibold mb-2">
+                            75 L
+                            <small class="text-gray-500"> - Residential, Villa</small>
+                        </h5>
+                        <p class="text-sm text-gray-600 mb-3">
+                            Well-designed villa with three bedrooms, modern kitchen and
+                            spacious living area located in a serene neighborhood.
+                        </p>
+                        <a href="#" class="text-primary text-sm flex items-center hover:underline">More Details
+                            <i class="fa-solid fa-caret-right ml-1"></i></a>
+                        <div class="flex space-x-4 text-sm text-gray-600 mt-3">
+                            <span class="flex items-center space-x-1"><i class="fa-solid fa-expand"></i>
+                                <span>1308 sq ft</span></span>
+                            <span class="flex items-center space-x-1"><i class="fa-solid fa-bed"></i>
+                                <span>3</span></span>
+                            <span class="flex items-center space-x-1"><i class="fa-solid fa-bath"></i>
+                                <span>3</span></span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Property Card 6 -->
+                <article class="property-card border border-gray-200 rounded shadow-sm overflow-hidden"
+                    data-title="Luxury Flat & Penthouse" data-price="9500000" data-date="2025-03-20" data-status="sale"
+                    data-types="residential,apartment">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/488x326.png?text=Property+6" alt="Luxury Flat"
+                            class="w-full h-48 object-cover" />
+                        <span class="absolute top-2 left-2 bg-secondary text-white text-xs px-2 py-1 rounded">New
+                            Property</span>
+                        <span class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded">For
+                            Sale</span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="text-lg font-semibold mb-1">Luxury Flat &amp; Penthouse</h4>
+                        <h5 class="text-primary text-base font-semibold mb-2">
+                            90 L
+                            <small class="text-gray-500"> - Residential, Flat</small>
+                        </h5>
+                        <p class="text-sm text-gray-600 mb-3">
+                            Stylish flat and penthouse units with panoramic views,
+                            contemporary interiors and convenient access to the airport.
+                        </p>
+                        <a href="#" class="text-primary text-sm flex items-center hover:underline">More Details
+                            <i class="fa-solid fa-caret-right ml-1"></i></a>
+                        <div class="flex space-x-4 text-sm text-gray-600 mt-3">
+                            <span class="flex items-center space-x-1"><i class="fa-solid fa-expand"></i>
+                                <span>1900 sq ft</span></span>
+                            <span class="flex items-center space-x-1"><i class="fa-solid fa-bed"></i>
+                                <span>3</span></span>
+                            <span class="flex items-center space-x-1"><i class="fa-solid fa-bath"></i>
+                                <span>3</span></span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <!-- Pagination -->
+            <div class="mt-6 flex justify-center">
+                <ul class="inline-flex space-x-2">
+                    <li>
+                        <a href="#" class="px-3 py-2 border border-gray-300 rounded bg-primary text-white">1</a>
+                    </li>
+                    <li>
+                        <a href="#" class="px-3 py-2 border border-gray-300 rounded hover:bg-gray-100">2</a>
+                    </li>
+                    <li>
+                        <a href="#" class="px-3 py-2 border border-gray-300 rounded hover:bg-gray-100">3</a>
+                    </li>
+                    <li>
+                        <a href="#" class="px-3 py-2 border border-gray-300 rounded hover:bg-gray-100">4</a>
+                    </li>
+                    <li>
+                        <a href="#" class="px-3 py-2 border border-gray-300 rounded hover:bg-gray-100">5</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <p class="mb-4">
+                        Our company specialises in providing high quality real estate
+                        services for residential and commercial properties. We offer
+                        investment solutions for investors across sectors such as
+                        townships, group housing, IT &amp; commercial, hospitality,
+                        leisure, retail and industrial infrastructure.
+                    </p>
+                    <h3 class="text-xl font-semibold mb-2">Why Choose Us</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>Decades of continuous service to the realty sector.</li>
+                        <li>
+                            Authorized sales partners with major developers, offering best
+                            rates and services.
+                        </li>
+                        <li>
+                            Expertise and experience in managing complex realty
+                            transactions.
+                        </li>
+                        <li>
+                            Extensive database of projects and investors to benefit
+                            buyers and sellers.
+                        </li>
+                        <li>
+                            Personalised attention to meet individual client needs.
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-2">Selling Your Properties</h3>
+                    <p class="mb-4">
+                        We assist in selling commercial &amp; residential properties and
+                        ensure the best price for your property.
+                    </p>
+                    <h3 class="text-xl font-semibold mb-2">Best Deal Suggestions</h3>
+                    <p class="mb-4">
+                        Looking to buy or invest? We provide tailored property
+                        suggestions based on your requirements and budget.
+                    </p>
+                    <h3 class="text-xl font-semibold mb-2">Commercial Property Leasing</h3>
+                    <p class="mb-4">
+                        We provide leasing services for commercial and residential
+                        properties including showrooms, offices, warehouses and more.
+                    </p>
+                    <h3 class="text-xl font-semibold mb-2">Project Marketing</h3>
+                    <p class="mb-4">
+                        Marketing and sales services for commercial and residential
+                        projects.
+                    </p>
+                    <h3 class="text-xl font-semibold mb-2">Professional Consultation</h3>
+                    <p class="mb-4">
+                        Our experienced consultants provide expert advice on real estate
+                        projects and investments.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-200 py-10">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- About Company -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">About Company</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#home" class="hover:text-primary">Home</a></li>
+                    <li><a href="#" class="hover:text-primary">About Us</a></li>
+                    <li><a href="#services" class="hover:text-primary">Services</a></li>
+                    <li><a href="#property" class="hover:text-primary">Featured Projects</a></li>
+                    <li><a href="#property" class="hover:text-primary">New Projects</a></li>
+                    <li><a href="#property" class="hover:text-primary">Property Listing</a></li>
+                    <li><a href="#" class="hover:text-primary">Blog</a></li>
+                    <li><a href="#" class="hover:text-primary">Contact Us</a></li>
+                </ul>
+            </div>
+            <!-- Property For Sale -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Property For Sale</h3>
+                <ul class="space-y-2 text-sm">
+                    <li>
+                        <a href="#property" class="hover:text-primary">Residential Property</a>
+                        <ul class="ml-4 mt-1 space-y-1 list-disc list-inside text-xs">
+                            <li><a href="#property" class="hover:text-primary">Plot</a></li>
+                            <li><a href="#property" class="hover:text-primary">Villa</a></li>
+                            <li><a href="#property" class="hover:text-primary">Apartment</a></li>
+                            <li><a href="#property" class="hover:text-primary">Floor</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#property" class="hover:text-primary">Commercial Property</a>
+                        <ul class="ml-4 mt-1 space-y-1 list-disc list-inside text-xs">
+                            <li><a href="#property" class="hover:text-primary">Office</a></li>
+                            <li><a href="#property" class="hover:text-primary">Shop</a></li>
+                            <li><a href="#property" class="hover:text-primary">Showroom</a></li>
+                            <li><a href="#property" class="hover:text-primary">Land</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- Property For Rent -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Property For Rent</h3>
+                <ul class="space-y-2 text-sm">
+                    <li>
+                        <a href="#property" class="hover:text-primary">Commercial Rentals</a>
+                        <ul class="ml-4 mt-1 space-y-1 list-disc list-inside text-xs">
+                            <li><a href="#property" class="hover:text-primary">Office Space</a></li>
+                            <li><a href="#property" class="hover:text-primary">Warehouse</a></li>
+                            <li><a href="#property" class="hover:text-primary">Showroom</a></li>
+                            <li><a href="#property" class="hover:text-primary">Restaurant</a></li>
+                            <li><a href="#property" class="hover:text-primary">Institute / IT</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#property" class="hover:text-primary">Residential Rentals</a>
+                    </li>
+                </ul>
+                <div class="mt-6">
+                    <h3 class="text-lg font-semibold mb-2">Contact Us</h3>
+                    <p class="text-sm leading-relaxed">
+                        <strong>Military Veteran Real Estate Consultancy</strong><br />Ph: +91 8559067075<br />Email:
+                        <a href="mailto:sahil.aps2k12@gmail.com" class="hover:text-primary">sahil.aps2k12@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+            <!-- Property Locations -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Property Locations</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#property" class="hover:text-primary">Downtown</a></li>
+                    <li><a href="#property" class="hover:text-primary">Lakeside</a></li>
+                    <li><a href="#property" class="hover:text-primary">Hill View</a></li>
+                    <li><a href="#property" class="hover:text-primary">Suburban</a></li>
+                    <li><a href="#property" class="hover:text-primary">Industrial Zone</a></li>
+                    <li><a href="#property" class="hover:text-primary">Airport Road</a></li>
+                    <li><a href="#property" class="hover:text-primary">Beachfront</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-4">
+            <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p class="mb-2 md:mb-0">© 2025 Military Veteran Real Estate Consultancy - All Rights Reserved.</p>
+                <p>
+                    Designed by
+                    <a href="#" class="hover:text-primary">Military Veteran Real Estate Consultancy</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll To Top Button -->
+    <a href="#" id="scroll-top"
+        class="fixed bottom-4 right-4 bg-primary text-white p-3 rounded-full shadow-lg hover:opacity-90"
+        aria-label="Scroll to top"><i class="fa-solid fa-chevron-up"></i></a>
+    <!-- Login Modal -->
+    <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden"
+        aria-hidden="true">
+        <div class="bg-white rounded-lg w-11/12 md:w-1/3 p-6 relative overflow-hidden">
+            <button id="login-close" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+                aria-label="Close login modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h2 class="text-xl font-semibold mb-4">Login</h2>
+            <form>
+                <div class="mb-4">
+                    <label for="login-username" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                    <input type="text" id="login-username"
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                        placeholder="Enter username" />
+                </div>
+                <div class="mb-4">
+                    <label for="login-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input type="password" id="login-password"
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                        placeholder="Enter password" />
+                </div>
+                <div class="mb-4 flex items-center">
+                    <input type="checkbox" id="remember" class="form-checkbox h-4 w-4 text-primary" />
+                    <label for="remember" class="ml-2 text-sm text-gray-600">Remember me</label>
+                </div>
+                <button type="submit" class="w-full px-4 py-2 bg-primary text-white rounded hover:opacity-90">
+                    Login
+                </button>
+            </form>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>

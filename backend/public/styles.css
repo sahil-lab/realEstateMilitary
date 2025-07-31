@@ -1,0 +1,261 @@
+/*
+ * Custom colour definitions and tweaks to harmonise with the
+ * reference site's palette. The primary colour is a warm orange
+ * reminiscent of the original page, while the secondary colour
+ * reflects the cool cyan used for secondary accents. Additional
+ * adjustments ensure form controls and checkboxes align with the
+ * overall aesthetic.
+ */
+.text-primary {
+    color: #ec894d;
+}
+
+.bg-primary {
+    background-color: #ec894d;
+}
+
+.text-secondary {
+    color: #0fa1bf;
+}
+
+.bg-secondary {
+    background-color: #0fa1bf;
+}
+
+/* Remove native select arrow for a cleaner custom appearance */
+select::-ms-expand {
+    display: none;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='5' viewBox='0 0 10 5'%3E%3Cpath fill='%23394041' d='M0 0l5 5 5-5z'/%3E%3C/svg%3E");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 10px 5px;
+    padding-right: 2rem;
+}
+
+/* Accent colour for checkboxes */
+input[type="checkbox"].form-checkbox {
+    accent-color: #ec894d;
+}
+
+/* Ensure dropdown content overlays correctly on mobile */
+#type-dropdown {
+    max-height: 15rem;
+    overflow-y: auto;
+}
+
+/* Basic transition for mobile navigation */
+#mobile-menu {
+    transition: max-height 0.3s ease;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Additional hover effects */
+.hover\:text-primary:hover {
+    color: #ec894d;
+}
+
+/* Focus ring colors */
+.focus\:ring-primary:focus {
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgba(236, 137, 77, var(--tw-ring-opacity));
+}
+
+/* Custom shadow for elevated cards */
+.shadow-custom {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Smooth transitions for interactive elements */
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+/* Gallery filter buttons */
+.gallery-filter-active {
+    background-color: #ec894d;
+    color: white;
+}
+
+.gallery-filter-inactive {
+    background-color: #e5e7eb;
+    color: #374151;
+}
+
+/* Property card hover effects */
+.property-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.property-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Statistics section animations */
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stat-item {
+    animation: countUp 0.6s ease-out;
+}
+
+/* Mobile menu animation */
+@media (max-width: 768px) {
+    #mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    #mobile-menu.show {
+        max-height: 500px;
+    }
+}
+
+/* Scroll to top button */
+#scroll-top {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+#scroll-top.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Modal animations */
+#login-modal {
+    transition: opacity 0.3s ease-in-out;
+}
+
+#login-modal .bg-white {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(0.95);
+}
+
+#login-modal:not(.hidden) .bg-white {
+    transform: scale(1);
+}
+
+/* Custom form styling */
+.form-input {
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-input:focus {
+    border-color: #ec894d;
+    box-shadow: 0 0 0 3px rgba(236, 137, 77, 0.1);
+}
+
+/* Newsletter section styling */
+.newsletter-input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.newsletter-button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* Partner logos styling */
+.partner-logo {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease-in-out;
+}
+
+.partner-logo:hover {
+    filter: grayscale(0%);
+}
+
+/* Hero section overlay */
+.hero-overlay {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+/* Feature cards styling */
+.feature-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Responsive text sizing */
+@media (max-width: 640px) {
+    .text-responsive-lg {
+        font-size: 1.5rem;
+    }
+
+    .text-responsive-xl {
+        font-size: 1.875rem;
+    }
+}
+
+@media (min-width: 641px) {
+    .text-responsive-lg {
+        font-size: 1.875rem;
+    }
+
+    .text-responsive-xl {
+        font-size: 2.25rem;
+    }
+}
+
+/* Loading animation for images */
+.image-loading {
+    background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ec894d;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #d67a3e;
+}
