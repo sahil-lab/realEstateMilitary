@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-module.exports = async (req, res, next) => {
+// Main authentication middleware
+const protect = async (req, res, next) => {
     const token = req.header('Authorization')?.replace('Bearer ', '');
     if (!token) return res.status(401).json({ msg: 'No token' });
     try {
@@ -14,13 +15,15 @@ module.exports = async (req, res, next) => {
 };
 
 // Admin check
-module.exports.isAdmin = (req, res, next) => {
+const admin = (req, res, next) => {
     if (req.user.role !== 'admin' && req.user.role !== 'superadmin') return res.status(403).json({ msg: 'Access denied' });
     next();
 };
 
 // Superadmin check
-module.exports.isSuperAdmin = (req, res, next) => {
+const superadmin = (req, res, next) => {
     if (req.user.role !== 'superadmin') return res.status(403).json({ msg: 'Access denied' });
     next();
-}; 
+};
+
+module.exports = { protect, admin, superadmin }; 

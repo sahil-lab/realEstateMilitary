@@ -4,20 +4,21 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const multer = require('multer');
 const admin = require('firebase-admin');
+const { protect, admin: isAdmin } = require('./middleware/auth');
 const authRoutes = require('./routes/auth');
 const propertyRoutes = require('./routes/property');
 const app = express();
 
-// Initialize Firebase Admin
-admin.initializeApp({
-    credential: admin.credential.applicationDefault(),
-    // Use provided config if needed
-});
+// Initialize Firebase Admin (commented out for now)
+// admin.initializeApp({
+//     credential: admin.credential.applicationDefault(),
+//     // Use provided config if needed
+// });
 
 // Middleware
 app.use(express.json());
 app.use(cors());
-app.use('/public', express.static('public'));
+app.use(express.static('public'));
 
 // Database connection
 mongoose.connect(process.env.VITE_MONGODB_URI, {
@@ -35,7 +36,7 @@ const storage = multer.diskStorage({
     filename: (req, file, cb) => cb(null, Date.now() + '-' + file.originalname)
 });
 const upload = multer({ storage });
-app.post('/api/upload', protect, admin, upload.single('image'), (req, res) => {
+app.post('/api/upload', protect, isAdmin, upload.single('image'), (req, res) => {
     res.json({ filePath: `/public/images/properties/${req.file.filename}` });
 });
 

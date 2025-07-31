@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Property = require('../models/Property');
-const auth = require('../middleware/auth');
+const { protect, admin } = require('../middleware/auth');
 
 // Add property (admin only)
-router.post('/', auth.isAdmin, async (req, res) => {
+router.post('/', protect, admin, async (req, res) => {
     try {
         const property = new Property(req.body);
         await property.save();

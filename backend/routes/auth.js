@@ -2,7 +2,10 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
-const auth = require('../middleware/auth');
+const { protect, superadmin } = require('../middleware/auth');
+
+// Helper function to sign JWT tokens
+const sign = (user) => jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1d' });
 
 // Superadmin register
 router.post('/superadmin/register', async (req, res) => {

@@ -594,4 +594,210 @@ function createPropertyCard(property) {
 // Load properties when page loads
 if (document.getElementById('property-list')) {
     loadProperties();
-} 
+}
+
+// Query Form Functionality
+document.addEventListener('DOMContentLoaded', function () {
+    const queryForm = document.getElementById('queryForm');
+    const whatsappSubmitBtn = document.getElementById('whatsappSubmit');
+    const emailSubmitBtn = document.getElementById('emailSubmit');
+
+    if (queryForm) {
+        // WhatsApp submission
+        queryForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            submitQueryToWhatsApp();
+        });
+
+        // Email submission
+        if (emailSubmitBtn) {
+            emailSubmitBtn.addEventListener('click', function () {
+                if (validateQueryForm()) {
+                    submitQueryToEmail();
+                }
+            });
+        }
+    }
+
+    function validateQueryForm() {
+        const requiredFields = ['queryName', 'queryPhone', 'queryEmail', 'queryType', 'queryBudget', 'queryMessage'];
+        let isValid = true;
+
+        requiredFields.forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (!field || !field.value.trim()) {
+                isValid = false;
+                if (field) {
+                    field.classList.add('border-red-500');
+                    field.focus();
+                }
+            } else {
+                if (field) {
+                    field.classList.remove('border-red-500');
+                }
+            }
+        });
+
+        // Validate email format
+        const email = document.getElementById('queryEmail');
+        if (email && email.value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value)) {
+                email.classList.add('border-red-500');
+                isValid = false;
+            }
+        }
+
+        // Validate phone number (basic validation)
+        const phone = document.getElementById('queryPhone');
+        if (phone && phone.value) {
+            const phoneRegex = /^[\d\s\+\-\(\)]{10,15}$/;
+            if (!phoneRegex.test(phone.value)) {
+                phone.classList.add('border-red-500');
+                isValid = false;
+            }
+        }
+
+        if (!isValid) {
+            showNotification('Please fill in all required fields correctly.', 'error');
+        }
+
+        return isValid;
+    }
+
+    function submitQueryToWhatsApp() {
+        if (!validateQueryForm()) return;
+
+        const formData = getFormData();
+        const message = formatWhatsAppMessage(formData);
+        const phoneNumber = '+918559067075';
+        const whatsappUrl = `https://wa.me/${phoneNumber.replace('+', '')}?text=${encodeURIComponent(message)}`;
+
+        // Show success message
+        showNotification('Redirecting to WhatsApp...', 'success');
+
+        // Open WhatsApp
+        setTimeout(() => {
+            window.open(whatsappUrl, '_blank');
+            resetQueryForm();
+        }, 1000);
+    }
+
+    function submitQueryToEmail() {
+        const formData = getFormData();
+        const subject = `Property Inquiry from ${formData.name}`;
+        const body = formatEmailMessage(formData);
+        const email = 'sahil.aps2k12@gmail.com';
+        const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        // Show success message
+        showNotification('Opening email client...', 'success');
+
+        // Open email client
+        setTimeout(() => {
+            window.location.href = mailtoUrl;
+            resetQueryForm();
+        }, 1000);
+    }
+
+    function getFormData() {
+        return {
+            name: document.getElementById('queryName').value.trim(),
+            phone: document.getElementById('queryPhone').value.trim(),
+            email: document.getElementById('queryEmail').value.trim(),
+            propertyType: document.getElementById('queryType').value,
+            budget: document.getElementById('queryBudget').value,
+            message: document.getElementById('queryMessage').value.trim()
+        };
+    }
+
+    function formatWhatsAppMessage(data) {
+        return `🏠 *Property Inquiry - Military Veteran Real Estate Consultancy*
+
+👤 *Name:* ${data.name}
+📱 *Phone:* ${data.phone}
+📧 *Email:* ${data.email}
+🏡 *Property Type:* ${data.propertyType}
+💰 *Budget:* ${data.budget}
+
+💬 *Message:*
+${data.message}
+
+---
+Sent via Military Veteran Real Estate Consultancy website`;
+    }
+
+    function formatEmailMessage(data) {
+        return `Property Inquiry - Military Veteran Real Estate Consultancy
+
+Dear Team,
+
+I am interested in your real estate services. Please find my details below:
+
+Name: ${data.name}
+Phone: ${data.phone}
+Email: ${data.email}
+Property Type: ${data.propertyType}
+Budget Range: ${data.budget}
+
+Message:
+${data.message}
+
+Thank you for your assistance.
+
+Best regards,
+${data.name}
+
+---
+This inquiry was submitted through the Military Veteran Real Estate Consultancy website.`;
+    }
+
+    function resetQueryForm() {
+        if (queryForm) {
+            queryForm.reset();
+            // Remove any error styling
+            const inputs = queryForm.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                input.classList.remove('border-red-500');
+            });
+        }
+    }
+
+    function showNotification(message, type = 'info') {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `fixed top-4 right-4 z-50 px-6 py-4 rounded-lg shadow-lg transform transition-all duration-300 translate-x-full`;
+
+        if (type === 'success') {
+            notification.classList.add('bg-green-500', 'text-white');
+        } else if (type === 'error') {
+            notification.classList.add('bg-red-500', 'text-white');
+        } else {
+            notification.classList.add('bg-blue-500', 'text-white');
+        }
+
+        notification.innerHTML = `
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                <span>${message}</span>
+            </div>
+        `;
+
+        document.body.appendChild(notification);
+
+        // Animate in
+        setTimeout(() => {
+            notification.classList.remove('translate-x-full');
+        }, 100);
+
+        // Remove after 3 seconds
+        setTimeout(() => {
+            notification.classList.add('translate-x-full');
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }, 3000);
+    }
+}); 

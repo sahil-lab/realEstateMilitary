@@ -1,120 +1,194 @@
-# Real Estate Website
+# 🏠 Military Veteran Real Estate Consultancy
 
-A complete, responsive real estate website built with HTML, Tailwind CSS, and vanilla JavaScript. This project replicates the structural layout and functionality of a professional property search and listing platform.
+> Professional real estate services with military precision and dedication
 
-## Features
+[![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=military-veteran-real-estate)](https://military-veteran-real-estate.vercel.app)
+[![Node.js](https://img.shields.io/badge/Node.js-16+-green.svg)](https://nodejs.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green.svg)](https://www.mongodb.com/)
 
-### 🏠 **Complete Website Sections**
-- **Home**: Hero section with call-to-action
-- **Featured Projects**: Showcase of premium properties
-- **Statistics**: Company achievements and metrics
-- **Property Gallery**: Categorized property showcase
-- **Best Deals**: Service highlights
-- **Authorized Partners**: Partner company logos
-- **Newsletter**: Email subscription
-- **Property Search**: Advanced filtering and search
-- **Services**: Detailed service descriptions
-- **Footer**: Comprehensive site navigation
+## 📞 Contact Information
 
-### 🔍 **Advanced Property Search**
-- Keyword search functionality
-- Property status filtering (Sale/Rent)
-- Multi-select property type dropdown
-- Plot size filtering
-- Sort by multiple criteria (price, date, title)
-- Real-time results counting
+**Phone Numbers:**
+- +91 9414062575
+- +91 9829088366  
+- +91 8559067075
 
-### 📱 **Responsive Design**
-- Mobile-first approach
-- Collapsible mobile navigation
-- Touch-friendly interface
-- Optimized for all screen sizes
+**Email:** sahil.aps2k12@gmail.com
 
-### ⚡ **Interactive Features**
-- Login modal with form validation
-- Smooth scrolling navigation
-- Scroll-to-top button
-- Property card hover effects
-- Animated statistics counters
-- Image loading animations
-- Newsletter subscription
+## ✨ Features
 
-## Technical Stack
+### 🎯 **Core Functionality**
+- **Property Listings**: Dynamic property search and filtering
+- **User Authentication**: Role-based access (User, Admin, Super Admin)
+- **Property Management**: Add, edit, delete properties (Admin)
+- **User Management**: Manage admins and users (Super Admin)
+- **Contact Forms**: WhatsApp & Email integration
+- **Real-time Communication**: Direct WhatsApp integration
 
-- **HTML5**: Semantic markup structure
-- **Tailwind CSS**: Utility-first CSS framework
-- **JavaScript (ES6+)**: Vanilla JS for interactivity
-- **Font Awesome**: Icon library
-- **CSS3**: Custom animations and transitions
+### 🎨 **Modern Design**
+- **Responsive Design**: Mobile-first approach
+- **Smooth Animations**: GSAP-powered transitions
+- **Interactive Elements**: Particles.js backgrounds
+- **Enhanced UX**: Smooth scrolling with Lenis
+- **Professional UI**: Tailwind CSS with custom styling
 
-## File Structure
+### 🔐 **Security**
+- **JWT Authentication**: Secure token-based auth
+- **Password Encryption**: bcryptjs hashing
+- **Role-based Access**: Multi-level user permissions
+- **Input Validation**: Server-side validation
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 16+
+- MongoDB Atlas account
+- Git
+
+### Local Development
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/sahil-lab/realEstateMilitary.git
+   cd realEstateMilitary
+   ```
+
+2. **Install dependencies**
+   ```bash
+   cd backend
+   npm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your configuration
+   ```
+
+4. **Start the development server**
+   ```bash
+   npm start
+   ```
+
+5. **Open your browser**
+   ```
+   http://localhost:3001
+   ```
+
+## 🌐 Deployment
+
+### Vercel Deployment
+
+1. **Connect to Vercel**
+   - Push code to GitHub
+   - Import project in Vercel
+   - Configure environment variables
+
+2. **Environment Variables (Required)**
+   ```
+   VITE_MONGODB_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret
+   VITE_FIREBASE_API_KEY=your_firebase_api_key
+   VITE_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+   VITE_FIREBASE_PROJECT_ID=your_firebase_project_id
+   VITE_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+   VITE_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+   VITE_FIREBASE_APP_ID=your_firebase_app_id
+   VITE_GOOGLE_CLIENT_ID=your_google_client_id
+   ```
+
+3. **Deploy**
+   - Vercel will automatically deploy on every push to main branch
+
+## 📁 Project Structure
 
 ```
 realEstateMilitary/
-├── index.html          # Main HTML file
-├── styles.css          # Custom CSS styles
-├── script.js           # JavaScript functionality
-├── README.md           # Project documentation
-└── images/             # Image assets directory
+├── backend/
+│   ├── models/           # MongoDB models
+│   ├── routes/           # API routes
+│   ├── middleware/       # Authentication middleware
+│   ├── public/           # Static frontend files
+│   ├── server.js         # Express server
+│   └── package.json      # Backend dependencies
+├── vercel.json           # Vercel configuration
+├── package.json          # Root package.json
+└── README.md
 ```
 
-## Getting Started
+## 🛠️ Technology Stack
 
-1. **Clone or Download** the project files
-2. **Open `index.html`** in your web browser
-3. **No build process required** - it's ready to use!
+### **Backend**
+- **Node.js** - Runtime environment
+- **Express.js** - Web framework
+- **MongoDB** - Database
+- **Mongoose** - ODM
+- **JWT** - Authentication
+- **bcryptjs** - Password hashing
+- **Multer** - File uploads
 
-## Customization
+### **Frontend**
+- **HTML5** - Semantic markup
+- **Tailwind CSS** - Utility-first CSS
+- **JavaScript** - Vanilla JS
+- **GSAP** - Animations
+- **Particles.js** - Background effects
+- **Lenis** - Smooth scrolling
 
-### Colors
-The primary color scheme can be modified in `styles.css`:
-- **Primary Color**: `#ec894d` (Orange)
-- **Secondary Color**: `#0fa1bf` (Cyan)
+### **Deployment**
+- **Vercel** - Hosting platform
+- **MongoDB Atlas** - Cloud database
+- **GitHub** - Version control
 
-### Content
-- Replace placeholder images with actual property photos
-- Update company information in the header and footer
-- Modify property listings in the Property section
-- Add real contact information
+## 👥 User Roles
 
-### Functionality
-- Integrate with a backend API for dynamic content
-- Add form submission handling
-- Implement user authentication
-- Connect to a property database
+### **Super Admin**
+- Manage all admin users
+- View system statistics
+- Full system access
 
-## Browser Compatibility
+### **Admin**
+- Add/edit/delete properties
+- Manage property listings
+- View user statistics
 
-- ✅ Chrome (latest)
-- ✅ Firefox (latest)
-- ✅ Safari (latest)
-- ✅ Edge (latest)
-- ✅ Mobile browsers
+### **User**
+- Browse properties
+- Submit inquiries
+- Contact via WhatsApp/Email
 
-## Performance Features
+## 📱 Contact Integration
 
-- Optimized images with lazy loading
-- Minimal JavaScript bundle
-- CSS animations for smooth UX
-- Responsive image sizing
-- Fast loading times
+### **WhatsApp Integration**
+- Direct WhatsApp messaging
+- Pre-formatted property inquiries
+- Contact: +91 8559067075
 
-## Accessibility
+### **Email Integration**
+- Auto-formatted emails
+- Property inquiry forms
+- Email: sahil.aps2k12@gmail.com
 
-- Semantic HTML structure
-- ARIA labels for interactive elements
-- Keyboard navigation support
-- Screen reader friendly
-- High contrast color scheme
+## 🤝 Contributing
 
-## License
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
-This project is open source and available under the [MIT License](LICENSE).
+## 📄 License
 
-## Support
+This project is licensed under the MIT License.
 
-For questions or support, please contact the development team.
+## 🙏 Acknowledgments
+
+- **Military Veterans** - For their service and inspiration
+- **Real Estate Community** - For trust and support
+- **Open Source** - For amazing tools and libraries
 
 ---
 
-**Ready to launch your real estate business online!** 🚀 
+**Built with ❤️ by Military Veteran Real Estate Consultancy**
+
+For support: sahil.aps2k12@gmail.com | +91 8559067075 

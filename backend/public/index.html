@@ -4,24 +4,50 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Real Estate Company</title>
+    <title>Military Veteran Real Estate Consultancy</title>
+
+    <!-- Enhanced Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Tailwind CSS via CDN -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-pO+iU0ewOuk4sPi0tLxe3LjVJN8dkUB7DXGAr5I9IrMGsnI13ubvRmBSZ5L3DJ0QA5BTnqCpxVdB+X5rvJDY5g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Enhanced Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
     <!-- Custom styles -->
     <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body class="font-sans antialiased text-gray-700">
+<body class="antialiased text-gray-700" style="font-family: 'Inter', sans-serif;">
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress" class="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
+        <div id="progress-bar"
+            class="h-full bg-gradient-to-r from-primary to-secondary transition-all duration-300 ease-out"
+            style="width: 0%"></div>
+    </div>
     <!-- Top Bar with contact and social icons -->
     <div class="bg-gray-100 text-gray-700 text-sm">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center py-2 px-4">
-            <div class="flex items-center space-x-2 mb-2 md:mb-0">
-                <i class="fa-solid fa-phone"></i>
-                <span>Call us: +91 9414062575, 9829088366</span>
+            <div class="flex flex-col md:flex-row items-center space-y-1 md:space-y-0 md:space-x-4 mb-2 md:mb-0">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-phone text-primary"></i>
+                    <span>Call us: +91 9414062575, 9829088366, 8559067075</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-envelope text-primary"></i>
+                    <span>Email: sahil.aps2k12@gmail.com</span>
+                </div>
             </div>
             <div class="flex items-center space-x-3">
                 <a href="#" aria-label="Facebook" class="text-gray-600 hover:text-primary"><i
@@ -143,20 +169,74 @@
         </nav>
     </header>
 
-    <!-- Home Section: Hero -->
-    <section id="home" class="relative h-64 md:h-96 bg-cover bg-center"
-        style="background-image: url('https://via.placeholder.com/1920x600.png?text=Find+Your+Perfect+Property');">
-        <div class="absolute inset-0 bg-black opacity-50"></div>
-        <div class="max-w-7xl mx-auto h-full flex flex-col items-center justify-center relative text-center px-4">
-            <h1 class="text-3xl md:text-5xl font-bold text-white mb-4">
-                Find Your Perfect Property
-            </h1>
-            <p class="text-lg md:text-2xl text-gray-200 mb-6">
-                Discover the best deals for sale and rent in your city
-            </p>
-            <a href="#property" class="px-6 py-3 bg-primary text-white rounded hover:opacity-90">
-                Browse Properties
-            </a>
+    <!-- Home Section: Enhanced Hero -->
+    <section id="home"
+        class="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 bg-cover bg-center z-0"
+            style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70 z-10"></div>
+
+        <!-- Particles Background -->
+        <div id="particles-js" class="absolute inset-0 z-20"></div>
+
+        <!-- Hero Content -->
+        <div class="relative z-30 text-center px-4 max-w-5xl mx-auto">
+            <div class="hero-content">
+                <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight"
+                    style="font-family: 'Playfair Display', serif;">
+                    <span class="text-primary font-bold animate-pulse">
+                        Military Veteran
+                    </span><br>
+                    <span class="text-white">Real Estate Consultancy</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
+                    Discover luxury properties with professional guidance from experienced military veterans
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#property"
+                        class="group relative px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-full shadow-2xl hover:shadow-primary/25 transform hover:scale-105 transition-all duration-300">
+                        <span class="relative z-10">Explore Properties</span>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-secondary to-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                    </a>
+                    <a href="#contact"
+                        class="px-8 py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-gray-900 transition-all duration-300">
+                        Get Consultation
+                    </a>
+                </div>
+            </div>
+
+            <!-- Floating Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 stats-container">
+                <div
+                    class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center border border-white/20 hover:bg-white/20 transition-all duration-300">
+                    <div class="text-3xl font-bold text-primary mb-2">500+</div>
+                    <div class="text-white text-sm">Properties Sold</div>
+                </div>
+                <div
+                    class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center border border-white/20 hover:bg-white/20 transition-all duration-300">
+                    <div class="text-3xl font-bold text-secondary mb-2">100+</div>
+                    <div class="text-white text-sm">Happy Families</div>
+                </div>
+                <div
+                    class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center border border-white/20 hover:bg-white/20 transition-all duration-300">
+                    <div class="text-3xl font-bold text-primary mb-2">15+</div>
+                    <div class="text-white text-sm">Years Experience</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Animated Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30">
+            <div class="animate-bounce">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
         </div>
     </section>
 
@@ -265,9 +345,8 @@
             <!-- Gallery Items -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Gallery Card 1 -->
-                <div class="border border-gray-200 rounded shadow-sm overflow-hidden">
-                    <img src="https://via.placeholder.com/480x300.png?text=Villa" alt="Villa Category"
-                        class="w-full h-40 object-cover" />
+                <div class="border border-gray-200 rounded shadow-sm overflow-hidden enhanced-card fade-in-element">
+                    <img src="images/villas.webp" alt="Villa Category" class="w-full h-40 object-cover" />
                     <div class="p-4 text-center">
                         <h4 class="text-lg font-semibold mb-2">Villas &amp; Bungalows</h4>
                         <a href="#property" class="text-primary text-sm hover:underline">Explore <i
@@ -275,8 +354,8 @@
                     </div>
                 </div>
                 <!-- Gallery Card 2 -->
-                <div class="border border-gray-200 rounded shadow-sm overflow-hidden">
-                    <img src="https://via.placeholder.com/480x300.png?text=Apartment" alt="Apartment Category"
+                <div class="border border-gray-200 rounded shadow-sm overflow-hidden enhanced-card fade-in-element">
+                    <img src="images/apartmentsAndFlats.jpg" alt="Apartment Category"
                         class="w-full h-40 object-cover" />
                     <div class="p-4 text-center">
                         <h4 class="text-lg font-semibold mb-2">Apartments &amp; Flats</h4>
@@ -285,9 +364,8 @@
                     </div>
                 </div>
                 <!-- Gallery Card 3 -->
-                <div class="border border-gray-200 rounded shadow-sm overflow-hidden">
-                    <img src="https://via.placeholder.com/480x300.png?text=Plots" alt="Plots Category"
-                        class="w-full h-40 object-cover" />
+                <div class="border border-gray-200 rounded shadow-sm overflow-hidden enhanced-card fade-in-element">
+                    <img src="images/plots.JPG" alt="Plots Category" class="w-full h-40 object-cover" />
                     <div class="p-4 text-center">
                         <h4 class="text-lg font-semibold mb-2">Plots &amp; Land</h4>
                         <a href="#property" class="text-primary text-sm hover:underline">Explore <i
@@ -295,8 +373,9 @@
                     </div>
                 </div>
                 <!-- Gallery Card 4 -->
-                <div class="border border-gray-200 rounded shadow-sm overflow-hidden md:col-span-3 md:flex">
-                    <img src="https://via.placeholder.com/960x300.png?text=Commercial" alt="Commercial Category"
+                <div
+                    class="border border-gray-200 rounded shadow-sm overflow-hidden md:col-span-3 md:flex enhanced-card fade-in-element">
+                    <img src="images/commercial.webp" alt="Commercial Category"
                         class="w-full md:w-1/2 h-40 md:h-48 object-cover" />
                     <div class="p-4 flex flex-col justify-center text-center md:text-left md:w-1/2">
                         <h4 class="text-lg font-semibold mb-2">Commercial Properties</h4>
@@ -585,65 +664,283 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-12 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Our Services</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <p class="mb-4">
-                        Our company specialises in providing high quality real estate
-                        services for residential and commercial properties. We offer
-                        investment solutions for investors across sectors such as
-                        townships, group housing, IT &amp; commercial, hospitality,
+    <!-- Enhanced Services Section -->
+    <section id="services" class="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-16 fade-in-element">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6"
+                    style="font-family: 'Playfair Display', serif;">
+                    Our <span class="gradient-text">Premium Services</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Military Veteran Real Estate Consultancy specializes in providing high-quality real estate services
+                    with military precision and dedication
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <!-- Why Choose Us -->
+                <div class="enhanced-card bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl fade-in-element">
+                    <div class="flex items-center mb-6">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-2xl flex items-center justify-center mr-4">
+                            <i class="fas fa-medal text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800" style="font-family: 'Playfair Display', serif;">Why
+                            Choose Us</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Our military background brings discipline, integrity, and excellence to every real estate
+                        transaction, serving across sectors like townships, group housing, IT & commercial, hospitality,
                         leisure, retail and industrial infrastructure.
                     </p>
-                    <h3 class="text-xl font-semibold mb-2">Why Choose Us</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
-                        <li>Decades of continuous service to the realty sector.</li>
-                        <li>
-                            Authorized sales partners with major developers, offering best
-                            rates and services.
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div
+                                class="w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-700">Decades of continuous service to the realty sector</span>
                         </li>
-                        <li>
-                            Expertise and experience in managing complex realty
-                            transactions.
+                        <li class="flex items-start">
+                            <div
+                                class="w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-700">Authorized sales partners with major developers, offering best
+                                rates and services</span>
                         </li>
-                        <li>
-                            Extensive database of projects and investors to benefit
-                            buyers and sellers.
+                        <li class="flex items-start">
+                            <div
+                                class="w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-700">Expertise in managing complex realty transactions</span>
                         </li>
-                        <li>
-                            Personalised attention to meet individual client needs.
+                        <li class="flex items-start">
+                            <div
+                                class="w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-700">Extensive database of projects and investors</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div
+                                class="w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-700">Personalized attention with military precision</span>
                         </li>
                     </ul>
                 </div>
-                <div>
-                    <h3 class="text-xl font-semibold mb-2">Selling Your Properties</h3>
-                    <p class="mb-4">
-                        We assist in selling commercial &amp; residential properties and
-                        ensure the best price for your property.
-                    </p>
-                    <h3 class="text-xl font-semibold mb-2">Best Deal Suggestions</h3>
-                    <p class="mb-4">
-                        Looking to buy or invest? We provide tailored property
-                        suggestions based on your requirements and budget.
-                    </p>
-                    <h3 class="text-xl font-semibold mb-2">Commercial Property Leasing</h3>
-                    <p class="mb-4">
-                        We provide leasing services for commercial and residential
-                        properties including showrooms, offices, warehouses and more.
-                    </p>
-                    <h3 class="text-xl font-semibold mb-2">Project Marketing</h3>
-                    <p class="mb-4">
-                        Marketing and sales services for commercial and residential
-                        projects.
-                    </p>
-                    <h3 class="text-xl font-semibold mb-2">Professional Consultation</h3>
-                    <p class="mb-4">
-                        Our experienced consultants provide expert advice on real estate
-                        projects and investments.
-                    </p>
+
+                <!-- Service Categories -->
+                <div class="space-y-6">
+                    <!-- Service Card 1 -->
+                    <div
+                        class="service-card enhanced-card bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl border-l-4 border-primary fade-in-element stagger-1">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-home text-primary text-xl"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold text-gray-800">Property Sales</h4>
+                        </div>
+                        <p class="text-gray-600">We assist in selling commercial & residential properties and ensure the
+                            best price for your investment.</p>
+                    </div>
+
+                    <!-- Service Card 2 -->
+                    <div
+                        class="service-card enhanced-card bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl border-l-4 border-secondary fade-in-element stagger-2">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-search-dollar text-secondary text-xl"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold text-gray-800">Investment Advisory</h4>
+                        </div>
+                        <p class="text-gray-600">Tailored property suggestions based on your requirements and budget
+                            with military-grade analysis.</p>
+                    </div>
+
+                    <!-- Service Card 3 -->
+                    <div
+                        class="service-card enhanced-card bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl border-l-4 border-primary fade-in-element stagger-3">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-building text-primary text-xl"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold text-gray-800">Commercial Leasing</h4>
+                        </div>
+                        <p class="text-gray-600">Comprehensive leasing services for commercial and residential
+                            properties including showrooms, offices, and warehouses.</p>
+                    </div>
+
+                    <!-- Service Card 4 -->
+                    <div
+                        class="service-card enhanced-card bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl border-l-4 border-secondary fade-in-element stagger-4">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-chart-line text-secondary text-xl"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold text-gray-800">Project Marketing</h4>
+                        </div>
+                        <p class="text-gray-600">Strategic marketing and sales services for commercial and residential
+                            projects with proven results.</p>
+                    </div>
+
+                    <!-- Service Card 5 -->
+                    <div
+                        class="service-card enhanced-card bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl border-l-4 border-primary fade-in-element stagger-5">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-user-tie text-primary text-xl"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold text-gray-800">Expert Consultation</h4>
+                        </div>
+                        <p class="text-gray-600">Our veteran consultants provide expert advice on real estate projects
+                            and investments with unmatched integrity.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="text-center fade-in-element">
+                <div class="bg-white rounded-3xl p-8 inline-block shadow-2xl border border-gray-200">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Ready to Get Started?</h3>
+                    <p class="text-gray-600 mb-6">Contact our veteran team for professional real estate consultation</p>
+                    <a href="#contact"
+                        class="btn-enhanced inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-secondary text-black font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 relative z-10">
+                        <i class="fas fa-phone mr-3 relative z-20 text-black"></i>
+                        <span class="relative z-20 text-black">Schedule Consultation</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Submit Your Query Section -->
+    <section class="py-16 bg-gradient-to-r from-primary to-secondary">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                    Submit Your Query
+                </h2>
+                <p class="text-white/90 text-lg">
+                    Get expert consultation for your real estate needs. We're here to help you find your dream property!
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12">
+                <form id="queryForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="queryName" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-user text-primary mr-2"></i>Full Name
+                            </label>
+                            <input type="text" id="queryName" name="name" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition duration-200"
+                                placeholder="Enter your full name">
+                        </div>
+
+                        <div>
+                            <label for="queryPhone" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-phone text-primary mr-2"></i>Phone Number
+                            </label>
+                            <input type="tel" id="queryPhone" name="phone" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition duration-200"
+                                placeholder="Enter your phone number">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="queryEmail" class="block text-sm font-semibold text-gray-700 mb-2">
+                            <i class="fas fa-envelope text-primary mr-2"></i>Email Address
+                        </label>
+                        <input type="email" id="queryEmail" name="email" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition duration-200"
+                            placeholder="Enter your email address">
+                    </div>
+
+                    <div>
+                        <label for="queryType" class="block text-sm font-semibold text-gray-700 mb-2">
+                            <i class="fas fa-home text-primary mr-2"></i>Property Type
+                        </label>
+                        <select id="queryType" name="propertyType" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition duration-200">
+                            <option value="">Select property type</option>
+                            <option value="Residential">Residential</option>
+                            <option value="Commercial">Commercial</option>
+                            <option value="Industrial">Industrial</option>
+                            <option value="Plots">Plots</option>
+                            <option value="Investment">Investment</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="queryBudget" class="block text-sm font-semibold text-gray-700 mb-2">
+                            <i class="fas fa-rupee-sign text-primary mr-2"></i>Budget Range
+                        </label>
+                        <select id="queryBudget" name="budget" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition duration-200">
+                            <option value="">Select budget range</option>
+                            <option value="Under 50 Lakhs">Under ₹50 Lakhs</option>
+                            <option value="50 Lakhs - 1 Crore">₹50 Lakhs - ₹1 Crore</option>
+                            <option value="1 - 2 Crores">₹1 - ₹2 Crores</option>
+                            <option value="2 - 5 Crores">₹2 - ₹5 Crores</option>
+                            <option value="Above 5 Crores">Above ₹5 Crores</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="queryMessage" class="block text-sm font-semibold text-gray-700 mb-2">
+                            <i class="fas fa-comment-dots text-primary mr-2"></i>Your Message
+                        </label>
+                        <textarea id="queryMessage" name="message" rows="4" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition duration-200 resize-none"
+                            placeholder="Tell us about your requirements..."></textarea>
+                    </div>
+
+                    <!-- Anti-spam honeypot field -->
+                    <input type="text" name="website" style="display: none;" tabindex="-1" autocomplete="off">
+
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <button type="submit" id="whatsappSubmit"
+                            class="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-lg transition duration-200 flex items-center justify-center space-x-2">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            <span>Send via WhatsApp</span>
+                        </button>
+
+                        <button type="button" id="emailSubmit"
+                            class="flex-1 bg-primary hover:opacity-90 text-white font-semibold py-4 px-6 rounded-lg transition duration-200 flex items-center justify-center space-x-2">
+                            <i class="fas fa-envelope text-xl"></i>
+                            <span>Send via Email</span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Contact Info -->
+                <div class="mt-8 pt-8 border-t border-gray-200">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
+                        <div>
+                            <div class="bg-green-50 rounded-lg p-6">
+                                <i class="fab fa-whatsapp text-3xl text-green-600 mb-3"></i>
+                                <h3 class="font-semibold text-gray-800 mb-2">WhatsApp</h3>
+                                <p class="text-gray-600">+91 8559067075</p>
+                                <p class="text-sm text-gray-500 mt-2">Available 24/7</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="bg-blue-50 rounded-lg p-6">
+                                <i class="fas fa-envelope text-3xl text-blue-600 mb-3"></i>
+                                <h3 class="font-semibold text-gray-800 mb-2">Email</h3>
+                                <p class="text-gray-600">sahil.aps2k12@gmail.com</p>
+                                <p class="text-sm text-gray-500 mt-2">Response within 2 hours</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -777,7 +1074,219 @@
             </form>
         </div>
     </div>
-    <!-- Scripts -->
+    <!-- Enhanced Scripts -->
+    <script>
+        // Initialize Enhanced Features
+        document.addEventListener('DOMContentLoaded', function () {
+            initSmoothScrolling();
+            initParticles();
+            initScrollProgress();
+            initAnimations();
+            initEnhancedEffects();
+        });
+
+        // Smooth Scrolling with Lenis
+        function initSmoothScrolling() {
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smoothWheel: true,
+                smoothTouch: false
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+        }
+
+        // Particles.js for Hero Background
+        function initParticles() {
+            if (typeof particlesJS !== 'undefined') {
+                particlesJS('particles-js', {
+                    particles: {
+                        number: { value: 80, density: { enable: true, value_area: 800 } },
+                        color: { value: ['#ec894d', '#0fa1bf', '#ffffff'] },
+                        shape: { type: 'circle' },
+                        opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
+                        size: { value: 3, random: true, anim: { enable: true, speed: 4, size_min: 0.3 } },
+                        line_linked: {
+                            enable: true,
+                            distance: 150,
+                            color: '#ffffff',
+                            opacity: 0.4,
+                            width: 1
+                        },
+                        move: {
+                            enable: true,
+                            speed: 2,
+                            direction: 'none',
+                            random: false,
+                            straight: false,
+                            out_mode: 'out',
+                            bounce: false
+                        }
+                    },
+                    interactivity: {
+                        detect_on: 'canvas',
+                        events: {
+                            onhover: { enable: true, mode: 'repulse' },
+                            onclick: { enable: true, mode: 'push' },
+                            resize: true
+                        },
+                        modes: {
+                            repulse: { distance: 200, duration: 0.4 },
+                            push: { particles_nb: 4 }
+                        }
+                    },
+                    retina_detect: true
+                });
+            }
+        }
+
+        // Scroll Progress Bar
+        function initScrollProgress() {
+            const progressBar = document.getElementById('progress-bar');
+            if (progressBar) {
+                window.addEventListener('scroll', () => {
+                    const scrollTop = window.scrollY;
+                    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    const progress = (scrollTop / docHeight) * 100;
+                    progressBar.style.width = Math.min(progress, 100) + '%';
+                });
+            }
+        }
+
+        // GSAP Animations
+        function initAnimations() {
+            if (typeof gsap !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
+
+                // Hero animations
+                const heroTimeline = gsap.timeline({ delay: 0.5 });
+                heroTimeline
+                    .from('.hero-content h1', {
+                        duration: 1.5,
+                        y: 80,
+                        opacity: 0,
+                        ease: 'power3.out'
+                    })
+                    .from('.hero-content p', {
+                        duration: 1.2,
+                        y: 60,
+                        opacity: 0,
+                        ease: 'power3.out'
+                    }, '-=0.8')
+                    .from('.hero-content .flex', {
+                        duration: 1,
+                        y: 40,
+                        opacity: 0,
+                        ease: 'power3.out'
+                    }, '-=0.6')
+                    .from('.stats-container > div', {
+                        duration: 0.8,
+                        y: 30,
+                        opacity: 0,
+                        stagger: 0.2,
+                        ease: 'power3.out'
+                    }, '-=0.4');
+
+                // Section animations
+                const sections = document.querySelectorAll('section:not(#home)');
+                sections.forEach((section, index) => {
+                    const elements = section.querySelectorAll('h2, h3, p, .grid > div, .card, .stat, .service-card');
+
+                    gsap.from(elements, {
+                        scrollTrigger: {
+                            trigger: section,
+                            start: 'top 80%',
+                            end: 'bottom 20%',
+                            toggleActions: 'play none none reverse'
+                        },
+                        y: 60,
+                        opacity: 0,
+                        duration: 1,
+                        stagger: 0.15,
+                        ease: 'power3.out'
+                    });
+                });
+
+                // Parallax effects
+                gsap.utils.toArray('.parallax-bg').forEach(bg => {
+                    gsap.to(bg, {
+                        yPercent: -50,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: bg,
+                            start: 'top bottom',
+                            end: 'bottom top',
+                            scrub: true
+                        }
+                    });
+                });
+            }
+        }
+
+        // Enhanced Visual Effects
+        function initEnhancedEffects() {
+            // Add floating animation to stats
+            const statsCards = document.querySelectorAll('.stats-container > div');
+            statsCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.2}s`;
+                card.classList.add('animate-float');
+            });
+
+            // Enhanced hover effects for property cards
+            const propertyCards = document.querySelectorAll('.property-card, .partner-card');
+            propertyCards.forEach(card => {
+                card.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                    this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.1)';
+                });
+
+                card.addEventListener('mouseleave', function () {
+                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+                });
+            });
+
+            // Intersection Observer for fade-in effects
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in-up');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-element').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Enhanced cursor effect
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.querySelector('.custom-cursor');
+            if (cursor) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            }
+        });
+
+    </script>
+
+    <!-- Custom Cursor (Optional) -->
+    <div
+        class="custom-cursor fixed w-6 h-6 bg-primary rounded-full pointer-events-none z-50 opacity-50 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-200 hidden lg:block">
+    </div>
+
     <script src="script.js"></script>
 </body>
 
