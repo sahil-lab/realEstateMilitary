@@ -482,4 +482,116 @@ style.textContent = `
     }
   }
 `;
-document.head.appendChild(style); 
+document.head.appendChild(style);
+
+// Dynamic property loading
+const API_BASE = window.location.origin;
+
+async function loadProperties() {
+    const propertyList = document.getElementById('property-list');
+    const loading = document.getElementById('properties-loading');
+
+    try {
+        const response = await fetch(`${API_BASE}/api/properties`);
+        const properties = await response.json();
+
+        // Hide loading indicator
+        if (loading) loading.style.display = 'none';
+
+        // Clear existing content except loading indicator
+        const existingCards = propertyList.querySelectorAll('.property-card');
+        existingCards.forEach(card => card.remove());
+
+        // Add hardcoded sample properties for a mix of content
+        const sampleProperties = [
+            {
+                title: 'Luxury Villa in Gated Project',
+                partner: 'EMAAR Dubai & India',
+                description: 'A beautiful villa located in a gated community with modern amenities and lush green surroundings.',
+                price: 12000000,
+                location: 'Dubai Marina',
+                image: 'images/3954ba75-04a0-4ed0-865b-daa63bfc98d2.png',
+                features: ['4329 sq ft', '4 bed', '4 bath']
+            },
+            {
+                title: 'Modern 4 BHK Villa',
+                partner: 'Bhutani Infra',
+                description: 'A contemporary villa with spacious rooms, private gardens, and premium fittings and fixtures throughout.',
+                price: 11600000,
+                location: 'Noida',
+                image: 'images/28bd084d-5797-44ac-b316-ecb32fedfe0a.png',
+                features: ['3500 sq ft', '4 bed', '3 bath']
+            },
+            {
+                title: 'Premium Apartment Complex',
+                partner: 'Mahima Group',
+                description: 'Luxury apartments with world-class amenities and excellent connectivity.',
+                price: 8500000,
+                location: 'Jaipur',
+                image: 'images/046efad8-0521-47c6-8475-16daed3db340.png',
+                features: ['2200 sq ft', '3 bed', '2 bath']
+            }
+        ];
+
+        // Combine API properties with sample properties
+        const allProperties = [...sampleProperties, ...properties];
+
+        // Create property cards
+        allProperties.forEach(property => {
+            const card = createPropertyCard(property);
+            propertyList.appendChild(card);
+        });
+
+        // If no properties, show message
+        if (allProperties.length === 0) {
+            propertyList.innerHTML = '<div class="col-span-full text-center py-8 text-gray-600">No properties found.</div>';
+        }
+
+    } catch (error) {
+        console.error('Error loading properties:', error);
+        if (loading) {
+            loading.innerHTML = '<div class="col-span-full text-center py-8 text-red-600">Error loading properties. Please try again later.</div>';
+        }
+    }
+}
+
+function createPropertyCard(property) {
+    const article = document.createElement('article');
+    article.className = 'property-card border border-gray-200 rounded shadow-sm overflow-hidden';
+
+    const priceFormatted = property.price > 10000000
+        ? `₹${(property.price / 10000000).toFixed(1)} Cr`
+        : `₹${(property.price / 100000).toFixed(0)} L`;
+
+    const features = property.features || ['N/A sq ft', 'N/A bed', 'N/A bath'];
+
+    article.innerHTML = `
+    <div class="relative">
+      <img src="${property.image}" alt="${property.title}" class="w-full h-48 object-cover" />
+      <span class="absolute top-2 left-2 bg-secondary text-white text-xs px-2 py-1 rounded">New Property</span>
+      <span class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded">For Sale</span>
+    </div>
+    <div class="p-4">
+      <h4 class="text-lg font-semibold mb-1">${property.title}</h4>
+      <h5 class="text-primary text-base font-semibold mb-2">
+        ${priceFormatted}
+        <small class="text-gray-500"> - ${property.partner}</small>
+      </h5>
+      <p class="text-sm text-gray-600 mb-3">${property.description}</p>
+      <a href="#" class="text-primary text-sm flex items-center hover:underline">More Details
+        <i class="fa-solid fa-caret-right ml-1"></i></a>
+      <div class="flex space-x-4 text-sm text-gray-600 mt-3">
+        <span class="flex items-center space-x-1"><i class="fa-solid fa-expand"></i> <span>${features[0]}</span></span>
+        <span class="flex items-center space-x-1"><i class="fa-solid fa-bed"></i> <span>${features[1]}</span></span>
+        <span class="flex items-center space-x-1"><i class="fa-solid fa-bath"></i> <span>${features[2]}</span></span>
+      </div>
+    </div>
+  `;
+
+    return article;
+}
+
+// Load properties when page loads
+if (document.getElementById('property-list')) {
+    loadProperties();
+} 

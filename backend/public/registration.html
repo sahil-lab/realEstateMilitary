@@ -263,12 +263,91 @@
             if (e.target === loginModal) hideLogin();
         });
 
-        // Form submission handling (placeholder)
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Registration/Login functionality will be connected to backend API');
-            });
+        // API helper function
+        const API_BASE = window.location.origin;
+
+        async function postJSON(url, data, token) {
+            const headers = { 'Content-Type': 'application/json' };
+            if (token) headers['Authorization'] = 'Bearer ' + token;
+            const res = await fetch(url, { method: 'POST', headers, body: JSON.stringify(data) });
+            if (!res.ok) throw new Error((await res.json()).message || 'Request failed');
+            return res.json();
+        }
+
+        // User registration
+        document.getElementById('user-form').querySelector('form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            try {
+                await postJSON(`${API_BASE}/api/auth/register`, Object.fromEntries(formData.entries()));
+                alert('User registered successfully!');
+                e.target.reset();
+            } catch (err) {
+                alert('Error: ' + err.message);
+            }
+        });
+
+        // Admin registration
+        document.getElementById('admin-form').querySelector('form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const token = formData.get('authToken');
+            formData.delete('authToken');
+            formData.delete('confirmPassword');
+
+            try {
+                await postJSON(`${API_BASE}/api/auth/adminRegister`, Object.fromEntries(formData.entries()), token);
+                alert('Admin registered successfully!');
+                e.target.reset();
+            } catch (err) {
+                alert('Error: ' + err.message);
+            }
+        });
+
+        // Super admin registration
+        document.getElementById('superadmin-form').querySelector('form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            formData.delete('confirmPassword');
+            formData.delete('secretKey'); // Remove secret key as it's not needed for API
+
+            try {
+                await postJSON(`${API_BASE}/api/auth/superAdminRegister`, Object.fromEntries(formData.entries()));
+                alert('Super admin registered successfully!');
+                e.target.reset();
+            } catch (err) {
+                alert('Error: ' + err.message);
+            }
+        });
+
+        // Login form submission
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const loginType = loginSubmit.dataset.type;
+
+            try {
+                let endpoint = '/api/auth/login';
+                if (loginType === 'admin') endpoint = '/api/auth/adminLogin';
+                if (loginType === 'superadmin') endpoint = '/api/auth/superAdminLogin';
+
+                const result = await postJSON(`${API_BASE}${endpoint}`, Object.fromEntries(formData.entries()));
+
+                // Store token and redirect based on role
+                if (result.role === 'superadmin') {
+                    localStorage.setItem('superAdminToken', result.token);
+                    window.location.href = 'superadmin-dashboard.html';
+                } else if (result.role === 'admin') {
+                    localStorage.setItem('adminToken', result.token);
+                    window.location.href = 'admin-dashboard.html';
+                } else {
+                    localStorage.setItem('userToken', result.token);
+                    window.location.href = 'index.html';
+                }
+            } catch (err) {
+                loginMessage.textContent = 'Error: ' + err.message;
+                loginMessage.className = 'mt-4 text-center text-red-600';
+            }
         });
     </script>
 </body>

@@ -20,18 +20,94 @@ router.post('/superadmin/register', async (req, res) => {
 });
 
 // Admin register (superadmin only)
-router.post('/admin/register', auth, (req, res) => {
-    if (req.user.role !== 'superadmin') return res.status(403).json({ msg: 'Unauthorized' });
-    // Similar to superadmin register, set role: 'admin'
+router.post('/adminRegister', protect, superadmin, async (req, res) => {
+    const { name, email, password } = req.body;
+    try {
+        const exists = await User.findOne({ email });
+        if (exists) return res.status(409).json({ message: 'Admin email exists' });
+        const admin = await User.create({ name, email, password, role: 'admin' });
+        res.status(201).json({ token: sign(admin) });
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
 });
 
-// Login
+// Super Admin Login
+router.post('/superAdminLogin', async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await User.findOne({ email, role: 'superadmin' });
+        if (!user || !(await user.comparePassword(password))) return res.status(401).json({ message: 'Invalid credentials' });
+        res.json({ token: sign(user), role: user.role });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+// Admin Login
+router.post('/adminLogin', async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await User.findOne({ email, role: 'admin' });
+        if (!user || !(await user.matchPassword(password))) return res.status(401).json({ message: 'Invalid credentials' });
+        res.json({ token: sign(user), role: user.role });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+// General Login (for users)
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
-    const user = await User.findOne({ email });
-    if (!user || !(await user.comparePassword(password))) return res.status(400).json({ msg: 'Invalid credentials' });
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-    res.json({ token, role: user.role });
+    try {
+        const user = await User.findOne({ email });
+        if (!user || !(await user.comparePassword(password))) return res.status(401).json({ message: 'Invalid credentials' });
+        res.json({ token: sign(user), role: user.role });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+// Get all admins (superadmin only)
+router.get('/admins', protect, superadmin, async (req, res) => {
+    try {
+        const admins = await User.find({ role: 'admin' }).select('-password').sort('-createdAt');
+        res.json(admins);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+// Delete admin (superadmin only)
+router.delete('/admins/:id', protect, superadmin, async (req, res) => {
+    try {
+        const admin = await User.findById(req.params.id);
+        if (!admin) return res.status(404).json({ message: 'Admin not found' });
+        if (admin.role !== 'admin') return res.status(400).json({ message: 'User is not an admin' });
+
+        await admin.deleteOne();
+        res.json({ message: 'Admin removed successfully' });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+// Get user statistics (for dashboard)
+router.get('/stats', protect, async (req, res) => {
+    try {
+        const totalUsers = await User.countDocuments({ role: 'user' });
+        const totalAdmins = await User.countDocuments({ role: 'admin' });
+        const totalSuperAdmins = await User.countDocuments({ role: 'superadmin' });
+
+        res.json({
+            totalUsers,
+            totalAdmins,
+            totalSuperAdmins,
+            totalAll: totalUsers + totalAdmins + totalSuperAdmins
+        });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
 });
 
 module.exports = router; 
