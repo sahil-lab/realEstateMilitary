@@ -1,0 +1,13 @@
+PLACE YOUR LOGO FILE HERE:
+
+File name: logo.png
+Location: backend/public/images/logo.png
+
+Your logo will appear on:
+- Main website header
+- Admin dashboard
+- Super admin dashboard  
+- Registration page
+
+Recommended size: 150x50 pixels
+Format: PNG with transparent background 

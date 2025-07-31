@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Generate Default Logo</title>
+</head>
+
+<body>
+    <h2>Military Veteran Real Estate Consultancy - Logo Generator</h2>
+    <canvas id="logo" width="150" height="50" style="border: 1px solid #ddd;"></canvas>
+    <br><br>
+    <button onclick="downloadLogo()">Download Logo</button>
+
+    <script>
+        const canvas = document.getElementById('logo');
+        const ctx = canvas.getContext('2d');
+
+        // Fill background
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, 150, 50);
+
+        // Draw border
+        ctx.strokeStyle = '#ec894d';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(1, 1, 148, 48);
+
+        // Add text
+        ctx.fillStyle = '#2d5a87';
+        ctx.font = 'bold 8px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('MILITARY VETERAN', 75, 18);
+        ctx.fillText('REAL ESTATE', 75, 32);
+
+        // Add decorative element
+        ctx.fillStyle = '#ec894d';
+        ctx.beginPath();
+        ctx.arc(130, 12, 3, 0, 2 * Math.PI);
+        ctx.fill();
+
+        function downloadLogo() {
+            const link = document.createElement('a');
+            link.download = 'logo.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+
+    <p><strong>Instructions:</strong></p>
+    <ol>
+        <li>Click "Download Logo" to get a default logo</li>
+        <li>Save it as <code>logo.png</code></li>
+        <li>Place it in: <code>backend/public/images/logo.png</code></li>
+        <li>Or replace with your custom logo</li>
+    </ol>
+</body>
+
+</html>
